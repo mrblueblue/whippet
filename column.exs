@@ -1,35 +1,67 @@
 defmodule Column do
-  @strings [
-    "dest_state",
-    "dest_city",
-    "carrier_name",
-    "origin_city"
-  ]
 
-  @ints [
-    "arrdelay",
-    "airtime",
-    "depdelay",
-    "carrierdelay",
-    "distance"
-  ]
+  @columns %{
+    "flights" => %{
+      string: [
+        "dest_state",
+        "dest_city",
+        "carrier_name",
+        "origin_city"
+      ],
+      int: [
+        "arrdelay",
+        "airtime",
+        "depdelay",
+        "carrierdelay",
+        "distance"
+      ]
+    },
+    "contributions" => %{
+      string: [
+        "recipient_party",
+        "committee_name",
+        "contributor_gender",
+        "organization_name",
+        "contributor_state",
+        "contributor_zipcode"
+      ],
+      int: [
+        "amount",
+        "political_cycle",
+        "lon",
+        "lat"
+      ]
+    },
+    "tweets" => %{
+      string: [
+        "country",
+        "lang",
+      ],
+      int: [
+        "followers",
+        "followees",
+        "tweet_count",
+        "lon",
+        "lat"
+      ]
+    }
+  }
 
-  @records [
-    "# Records"
-  ]
-
-  def random types do
+  def random(table, types) do
     types
-    |> Enum.reduce([], &add_columns_by_type/2)
+    |> (&(add_columns(&1, table))).()
     |> Enum.random
   end
 
-  defp add_columns_by_type(type, acc) do
-    case type do
-      :string -> Enum.concat(acc, @strings)
-      :int -> Enum.concat(acc, @ints)
-      :records -> Enum.concat(acc, @records)
-      _ -> acc
-    end
+  defp add_columns(types, table) do
+    Enum.reduce(types, [], fn(type, acc) ->
+      case type do
+        :int -> Enum.concat(acc, @columns[table][type])
+        :string -> Enum.concat(acc, @columns[table][type])
+        :records -> Enum.concat(acc, ["# Records"])
+        _ -> acc
+      end
+    end)
   end
+
 end
