@@ -19,6 +19,20 @@ defmodule Editor do
     end
   end
 
+  defmodule Settings do
+    def num_groups num do
+      input =
+        find_element(:css, ".chart-editor-right-panel")
+        |> find_within_element(:css, ".endInput")
+
+      input |> clear_field
+      input |> input_into_field(num)
+
+      send_keys(:enter)
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+    end
+  end
+
   defmodule Dimensions do
     def add({%Selector{value: value}, index}) do
       dimension = find_element(:css, ".dimensions-container>div:nth-child(#{index + 1})")
@@ -32,6 +46,8 @@ defmodule Editor do
 
       send_keys(:enter)
       click({:css, ".chart-editor-left-panel > .chart-editor-label"})
+      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
     end
   end
 
@@ -48,7 +64,8 @@ defmodule Editor do
 
       send_keys(:enter)
       click({:css, ".chart-editor-left-panel > .chart-editor-label"})
-      :timer.sleep(5000)
+      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
     end
   end
 
