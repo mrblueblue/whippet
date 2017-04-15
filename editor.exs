@@ -52,20 +52,23 @@ defmodule Editor do
   end
 
   defmodule Measures do
-    def add({%Selector{value: value}, index}) do
-      measure = find_element(:css, ".measures-container>div:nth-child(#{index + 1})")
+    def add({selector, index}) do
+      case selector do
+        %Selector{value: value} ->
+          measure = find_element(:css, ".measures-container>div:nth-child(#{index + 1})")
 
-      measure
-      |> click
+          measure
+          |> click
 
-      measure
-      |> find_within_element(:css, ".autocomplete-input input")
-      |> input_into_field(value)
+          measure
+          |> find_within_element(:css, ".autocomplete-input input")
+          |> input_into_field(value)
 
-      send_keys(:enter)
-      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
-      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
-      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+          send_keys(:enter)
+          send_keys(:enter)
+          :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+        nil -> nil
+      end
     end
   end
 

@@ -4,10 +4,9 @@ defmodule Chart.Pie do
 
   def is_valid selector do
     element_displayed?({:css, "#{selector} g.pie-slice"})
-
     find_all_elements(:css, "#{selector} g.pie-slice")
-      |> Stream.with_index
-      |> Enum.all?(&slice_valid?/1)
+    |> Stream.with_index
+    |> Enum.all?(&slice_valid?/1)
   end
 
   defp slice_valid? {element, index} do
@@ -15,13 +14,11 @@ defmodule Chart.Pie do
   end
 
   def num_slices selector do
-    find_all_elements(:css, "#{selector} g.pie-slice")
-    |> length
+    length find_all_elements(:css, "#{selector} g.pie-slice")
   end
 
   def filter(selector, index) do
-    find_element(:css, "#{selector} g.pie-slice._#{index}")
-    |> click
+    click find_element(:css, "#{selector} g.pie-slice._#{index}")
     :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
