@@ -2,9 +2,22 @@ defmodule Chart.Raster do
   use ExUnit.CaseTemplate
   use Hound.Helpers
 
-  def is_valid(selector, legend) do
-    displayed = element_displayed?({:css, "#{selector}.mapboxgl-map"})
-    legend_valid = Legend.Ordinal.is_valid(selector, legend)
-    displayed && legend_valid
+  def is_valid(selector, spec) do
+    displayed = canvas_displayed?(selector, spec.use_map)
+
+    if spec.legend == true do
+      legend_valid = Legend.Ordinal.is_valid(selector, spec.legend)
+      displayed && legend_valid
+    else
+      displayed
+    end
+  end
+
+  def canvas_displayed?(selector, use_map) do
+    if use_map == true do
+      element_displayed?({:css, "#{selector}.mapboxgl-map"})
+    else
+      element_displayed?({:css, "#{selector} canvas.webgl-canvas"})
+    end
   end
 end

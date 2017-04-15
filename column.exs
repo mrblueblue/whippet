@@ -14,7 +14,9 @@ defmodule Column do
         "depdelay",
         "carrierdelay",
         "distance"
-      ]
+      ],
+      lon: "dest_lon",
+      lat: "dest_lat"
     },
     "contributions" => %{
       string: [
@@ -30,7 +32,9 @@ defmodule Column do
         "political_cycle",
         "lon",
         "lat"
-      ]
+      ],
+      lon: "lon",
+      lat: "lat"
     },
     "tweets" => %{
       string: [
@@ -43,9 +47,19 @@ defmodule Column do
         "tweet_count",
         "lon",
         "lat"
-      ]
+      ],
+      lon: "lon",
+      lat: "lat"
     }
   }
+
+  def lon (table)  do
+    @columns[table].lon
+  end
+
+  def lat (table) do
+    @columns[table].lat
+  end
 
   def random(table, types) do
     types
