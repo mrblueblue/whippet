@@ -1,6 +1,6 @@
 defmodule Chart.Histogram do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid selector do
     num_bars(selector) > 1 && axis_rendered?(selector)
@@ -16,10 +16,10 @@ defmodule Chart.Histogram do
   end
 
   def brush(selector, [brush_start, brush_end]) do
-    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_start, 50)
-    Beagle.Helpers.mouse_down()
-    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_end, 50)
-    Beagle.Helpers.mouse_up()
-    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+    move_to({:css, "#{selector} .brush"}, brush_start, 50)
+    mouse_down()
+    move_to({:css, "#{selector} .brush"}, brush_end, 50)
+    mouse_up()
+    wait_until_not_visible(".chart-overlay")
   end
 end

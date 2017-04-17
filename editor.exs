@@ -1,5 +1,6 @@
 defmodule Editor do
   use Hound.Helpers
+  import Beagle.Helpers
 
   def switch_chart type do
     click({:css, ".#{type}-btn"})
@@ -16,6 +17,9 @@ defmodule Editor do
       spec.measures
       |> Stream.with_index
       |> Enum.each(&Editor.Measures.add/1)
+
+      wait_until_not_visible(".chart-overlay")
+      :ok
     end
 
     def save do
@@ -25,6 +29,13 @@ defmodule Editor do
   end
 
   defmodule Settings do
+
+    def geo_json text do
+      input_into_field({:css, ".react-selectize-search-field-and-selected-values input"}, text)
+      send_keys(:enter)
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+    end
+
     def num_groups num do
       input =
         find_element(:css, ".chart-editor-right-panel")
@@ -34,7 +45,8 @@ defmodule Editor do
       input |> input_into_field(num)
 
       send_keys(:enter)
-      Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+      wait_until_not_visible(".chart-overlay")
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
     end
   end
 
@@ -50,7 +62,7 @@ defmodule Editor do
 
       send_keys(:enter)
       send_keys(:enter)
-      Beagle.Helpers.wait_until_not_visible(".invisible-overlay")
+      wait_until_not_visible(".invisible-overlay")
     end
   end
 

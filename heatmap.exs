@@ -1,6 +1,6 @@
 defmodule Chart.Heatmap do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid selector do
     displayed = element_displayed?({:css, "#{selector} g.heatmap"})
@@ -16,7 +16,8 @@ defmodule Chart.Heatmap do
   def filter(selector, index) do
     box = "#{selector} g.box-group:nth-child(#{index + 1})"
     click find_element(:css, box)
-    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+    wait_until_not_visible(".chart-overlay")
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout) * 2)
   end
 
   def boxes_selected(selector) do

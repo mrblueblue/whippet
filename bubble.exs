@@ -1,6 +1,6 @@
 defmodule Chart.Bubble do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid anchor do
     element_displayed?({:css, "#{anchor} circle.bubble"})
@@ -19,7 +19,8 @@ defmodule Chart.Bubble do
 
   def filter(selector, index) do
     click find_element(:css, "#{selector} circle.bubble._#{index}")
-    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+    wait_until_not_visible(".chart-overlay")
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout) * 2)
   end
 
   def bubbles_selected(selector) do

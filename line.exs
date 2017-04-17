@@ -1,6 +1,6 @@
 defmodule Chart.Line do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid selector do
     axis_renders?(selector) && line_renders?(selector)
@@ -10,7 +10,7 @@ defmodule Chart.Line do
     line_path = "#{selector} path.line"
     element_displayed?({:css, line_path})
     find_all_elements(:css, line_path)
-      |> Enum.all?(&(element_displayed?(&1)))
+    |> Enum.all?(&(element_displayed?(&1)))
   end
 
   defp axis_renders? selector do
@@ -19,10 +19,10 @@ defmodule Chart.Line do
   end
 
   def brush(selector, [brush_start, brush_end]) do
-    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_start, 50)
-    Beagle.Helpers.mouse_down()
-    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_end, 50)
-    Beagle.Helpers.mouse_up()
-    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+    move_to({:css, "#{selector} .brush"}, brush_start, 50)
+    mouse_down()
+    move_to({:css, "#{selector} .brush"}, brush_end, 50)
+    mouse_up()
+    wait_until_not_visible(".chart-overlay")
   end
 end

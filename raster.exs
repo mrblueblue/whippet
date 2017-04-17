@@ -1,5 +1,4 @@
 defmodule Chart.Raster do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
 
   def is_valid(selector, spec) do
@@ -14,7 +13,7 @@ defmodule Chart.Raster do
   end
 
   def canvas_displayed?(selector, use_map) do
-    if use_map == true do
+    if use_map do
       element_displayed?({:css, "#{selector}.mapboxgl-map"})
     else
       element_displayed?({:css, "#{selector} canvas.webgl-canvas"})

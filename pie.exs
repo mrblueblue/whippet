@@ -1,6 +1,6 @@
 defmodule Chart.Pie do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid selector do
     element_displayed?({:css, "#{selector} g.pie-slice"})
@@ -19,7 +19,8 @@ defmodule Chart.Pie do
 
   def filter(selector, index) do
     click find_element(:css, "#{selector} g.pie-slice._#{index}")
-    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+    wait_until_not_visible(".chart-overlay")
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
   def slices_selected(selector) do

@@ -1,5 +1,4 @@
 defmodule Chart.Table do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
 
   def is_valid selector do
@@ -22,6 +21,7 @@ defmodule Chart.Table do
 
   def sort(selector, index) do
     click({:css, "#{selector} .docked-table-header > div:nth-child(#{index + 1})"})
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
   def filter(selector, index) do

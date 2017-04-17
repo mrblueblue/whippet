@@ -1,6 +1,6 @@
 defmodule Chart.Row do
-  use ExUnit.CaseTemplate
   use Hound.Helpers
+  import Beagle.Helpers
 
   def is_valid selector do
     element_displayed?({:css, "#{selector} g.row"})
@@ -15,14 +15,13 @@ defmodule Chart.Row do
   end
 
   def num_rows selector do
-    find_all_elements(:css, "#{selector} g.row")
-    |> length
+    length find_all_elements(:css, "#{selector} g.row")
   end
 
   def filter(selector, index) do
-    find_element(:css, "#{selector} g.row._#{index}")
-    |> click
-    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+    click find_element(:css, "#{selector} g.row._#{index}")
+    wait_until_not_visible(".chart-overlay")
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
   def rows_selected(selector) do
