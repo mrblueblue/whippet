@@ -17,4 +17,12 @@ defmodule Chart.Line do
     element_displayed?({:css, "#{selector} .axis.x"})
     element_displayed?({:css, "#{selector} .axis.y"})
   end
+
+  def brush(selector, [brush_start, brush_end]) do
+    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_start, 50)
+    Beagle.Helpers.mouse_down()
+    Beagle.Helpers.move_to({:css, "#{selector} .brush"}, brush_end, 50)
+    Beagle.Helpers.mouse_up()
+    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
+  end
 end
