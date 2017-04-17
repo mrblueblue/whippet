@@ -5,7 +5,7 @@ defmodule Chart.Raster do
   def is_valid(selector, spec) do
     displayed = canvas_displayed?(selector, spec.use_map)
 
-    if spec.legend == true do
+    if spec.legend do
       legend_valid = Legend.Ordinal.is_valid(selector, spec.legend)
       displayed && legend_valid
     else

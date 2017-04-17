@@ -19,7 +19,7 @@ defmodule Chart.Pie do
 
   def filter(selector, index) do
     click find_element(:css, "#{selector} g.pie-slice._#{index}")
-    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
   end
 
   def slices_selected(selector) do

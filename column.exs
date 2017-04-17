@@ -23,7 +23,6 @@ defmodule Column do
         "recipient_party",
         "committee_name",
         "contributor_gender",
-        "organization_name",
         "contributor_state",
         "contributor_zipcode"
       ],

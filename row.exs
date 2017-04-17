@@ -22,7 +22,7 @@ defmodule Chart.Row do
   def filter(selector, index) do
     find_element(:css, "#{selector} g.row._#{index}")
     |> click
-    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
   end
 
   def rows_selected(selector) do

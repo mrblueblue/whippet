@@ -16,7 +16,7 @@ defmodule Chart.Heatmap do
   def filter(selector, index) do
     box = "#{selector} g.box-group:nth-child(#{index + 1})"
     click find_element(:css, box)
-    :timer.sleep(Application.get_env(:beagle, :animation_timeout) * 1.5)
+    Beagle.Helpers.wait_until_not_visible(".chart-overlay")
   end
 
   def boxes_selected(selector) do

@@ -17,6 +17,11 @@ defmodule Editor do
       |> Stream.with_index
       |> Enum.each(&Editor.Measures.add/1)
     end
+
+    def save do
+      click({:css, ".button.save"})
+      :timer.sleep(Application.get_env(:beagle, :animation_timeout) * 2)
+    end
   end
 
   defmodule Settings do
@@ -29,7 +34,7 @@ defmodule Editor do
       input |> input_into_field(num)
 
       send_keys(:enter)
-      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+      Beagle.Helpers.wait_until_not_visible(".chart-overlay")
     end
   end
 
@@ -37,17 +42,15 @@ defmodule Editor do
     def add({%Selector{value: value}, index}) do
       dimension = find_element(:css, ".dimensions-container>div:nth-child(#{index + 1})")
 
-      dimension
-      |> click
+      click dimension
 
       dimension
       |> find_within_element(:css, ".autocomplete-input input")
       |> input_into_field(value)
 
       send_keys(:enter)
-      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
-      click({:css, ".chart-editor-left-panel > .chart-editor-label"})
-      :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+      send_keys(:enter)
+      Beagle.Helpers.wait_until_not_visible(".invisible-overlay")
     end
   end
 
@@ -57,8 +60,7 @@ defmodule Editor do
         %Selector{value: value} ->
           measure = find_element(:css, ".measures-container>div:nth-child(#{index + 1})")
 
-          measure
-          |> click
+          click measure
 
           measure
           |> find_within_element(:css, ".autocomplete-input input")
@@ -66,7 +68,7 @@ defmodule Editor do
 
           send_keys(:enter)
           send_keys(:enter)
-          :timer.sleep(Application.get_env(:beagle, :animation_timeout))
+          Beagle.Helpers.wait_until_not_visible(".invisible-overlay")
         nil -> nil
       end
     end
