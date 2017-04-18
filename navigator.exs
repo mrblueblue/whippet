@@ -34,6 +34,5 @@ defmodule Navigator do
     input_into_field({:css, ".search-input-comp input"}, table)
     click({:css, ".table-list > div"})
     click({:css, ".table-list > div"})
-    click({:css, ".add-chart"})
   end
 end
