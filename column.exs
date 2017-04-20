@@ -28,7 +28,7 @@ defmodule Column do
       ],
       int: [
         "amount",
-        "political_cycle",
+        "cycle",
         "lon",
         "lat"
       ],

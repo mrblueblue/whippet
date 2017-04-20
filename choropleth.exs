@@ -1,9 +1,9 @@
 defmodule Chart.Choropleth do
   use Hound.Helpers
-  import Beagle.Helpers
 
   def filter(node, meta) do
     click find_element(:css, "#{node} .metaData.#{meta}")
+    :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
   def is_selected_at(node, meta) do

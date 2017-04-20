@@ -19,7 +19,7 @@ defmodule Filter do
     :timer.sleep(Application.get_env(:beagle, :animation_timeout))
     move_to({:css, ".table-title"}, 0, 0)
     # send_down_arrow_x_times(:rand.uniform(6))
-    click find_element(:css, ".custom-selector-popup > div:nth-child(#{:random.uniform(6)})")
+    click find_element(:css, ".custom-selector-popup > div:nth-child(#{:rand.uniform(6)})")
     :timer.sleep(Application.get_env(:beagle, :animation_timeout))
     send_keys(:enter)
 
@@ -46,7 +46,7 @@ defmodule Filter do
     :timer.sleep(Application.get_env(:beagle, :animation_timeout))
   end
 
-  defp send_down_arrow_x_times (num \\ :rand.uniform(10)) do
+  defp send_down_arrow_x_times (num) do
     case num do
       0 -> nil
       _ ->
