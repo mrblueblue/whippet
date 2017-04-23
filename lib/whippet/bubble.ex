@@ -24,11 +24,11 @@ defmodule Whippet.Chart.Bubble do
   end
 
   def bubbles_selected(selector) do
-    Chart.Helpers.elements_selected(selector, "g.node")
+    Whippet.Chart.Helpers.elements_selected(selector, "g.node")
   end
 
   def is_selected_at(selector, index) do
     bubble = "g.chart-body > g.node:nth-child(#{index + 1})"
-    Chart.Helpers.is_element_selected_at(selector, bubble)
+    Whippet.Chart.Helpers.is_element_selected_at(selector, bubble)
   end
 end

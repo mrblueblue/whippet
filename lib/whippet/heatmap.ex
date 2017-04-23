@@ -21,10 +21,10 @@ defmodule Whippet.Chart.Heatmap do
   end
 
   def boxes_selected(selector) do
-    Chart.Helpers.elements_selected(selector, "g.box-group")
+    Whippet.Chart.Helpers.elements_selected(selector, "g.box-group")
   end
 
   def is_selected_at(selector, index) do
-    Chart.Helpers.is_element_selected_at(selector, "g.box-group:nth-child(#{index + 1})")
+    Whippet.Chart.Helpers.is_element_selected_at(selector, "g.box-group:nth-child(#{index + 1})")
   end
 end

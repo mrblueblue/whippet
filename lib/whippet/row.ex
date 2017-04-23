@@ -25,10 +25,10 @@ defmodule Whippet.Chart.Row do
   end
 
   def rows_selected(selector) do
-    Chart.Helpers.elements_selected(selector, "g.row rect")
+    Whippet.Chart.Helpers.elements_selected(selector, "g.row rect")
   end
 
   def is_selected_at(selector, index) do
-    Chart.Helpers.is_element_selected_at(selector, "g.row._#{index} rect")
+    Whippet.Chart.Helpers.is_element_selected_at(selector, "g.row._#{index} rect")
   end
 end

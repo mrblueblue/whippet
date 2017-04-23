@@ -7,6 +7,6 @@ defmodule Whippet.Chart.Choropleth do
   end
 
   def is_selected_at(node, meta) do
-    Chart.Helpers.is_element_selected_at(node, ".metaData.#{meta}")
+    Whippet.Chart.Helpers.is_element_selected_at(node, ".metaData.#{meta}")
   end
 end

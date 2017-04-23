@@ -30,6 +30,6 @@ defmodule Whippet.Chart.Table do
   end
 
   def is_selected_at(selector, index) do
-    Chart.Helpers.is_element_selected_at(selector, "table > tr:nth-child(#{index + 2})")
+    Whippet.Chart.Helpers.is_element_selected_at(selector, "table > tr:nth-child(#{index + 2})")
   end
 end

@@ -24,10 +24,10 @@ defmodule Whippet.Chart.Pie do
   end
 
   def slices_selected(selector) do
-    Chart.Helpers.elements_selected(selector, "g.pie-slice")
+    Whippet.Chart.Helpers.elements_selected(selector, "g.pie-slice")
   end
 
   def is_selected_at(selector, index) do
-    Chart.Helpers.is_element_selected_at(selector, "g.pie-slice._#{index}")
+    Whippet.Chart.Helpers.is_element_selected_at(selector, "g.pie-slice._#{index}")
   end
 end
