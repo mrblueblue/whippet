@@ -1,4 +1,4 @@
-defmodule Whippet.Records do
+defmodule Whippet.Chart.Count do
   use Hound.Helpers
 
   def selected do
