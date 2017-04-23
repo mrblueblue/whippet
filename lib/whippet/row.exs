@@ -1,4 +1,4 @@
-defmodule Chart.Row do
+defmodule Whippet.Chart.Row do
   use Hound.Helpers
   import Beagle.Helpers
 

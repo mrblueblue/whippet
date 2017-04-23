@@ -1,4 +1,4 @@
-defmodule Legend do
+defmodule Whippet.Legend do
   use Hound.Helpers
 
   # defmodule Continuous do1

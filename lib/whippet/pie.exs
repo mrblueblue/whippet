@@ -1,4 +1,4 @@
-defmodule Chart.Pie do
+defmodule Whippet.Chart.Pie do
   use Hound.Helpers
   import Beagle.Helpers
 

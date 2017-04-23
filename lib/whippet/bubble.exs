@@ -1,4 +1,4 @@
-defmodule Chart.Bubble do
+defmodule Whippet.Chart.Bubble do
   use Hound.Helpers
   import Beagle.Helpers
 

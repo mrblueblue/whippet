@@ -1,4 +1,4 @@
-defmodule Chart.Raster do
+defmodule Whippet.Chart.Raster do
   use Hound.Helpers
 
   def is_valid(selector, spec) do

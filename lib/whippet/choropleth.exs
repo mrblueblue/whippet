@@ -1,4 +1,4 @@
-defmodule Chart.Choropleth do
+defmodule Whippet.Chart.Choropleth do
   use Hound.Helpers
 
   def filter(node, meta) do

@@ -1,4 +1,4 @@
-defmodule Records do
+defmodule Whippet.Records do
   use Hound.Helpers
 
   def selected do

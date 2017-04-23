@@ -1,4 +1,4 @@
-defmodule Chart.Heatmap do
+defmodule Whippet.Chart.Heatmap do
   use Hound.Helpers
   import Beagle.Helpers
 

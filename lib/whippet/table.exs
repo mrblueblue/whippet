@@ -1,4 +1,4 @@
-defmodule Chart.Table do
+defmodule Whippet.Chart.Table do
   use Hound.Helpers
 
   def is_valid selector do

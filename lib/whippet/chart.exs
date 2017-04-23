@@ -1,4 +1,4 @@
-defmodule Chart do
+defmodule Whippet.Chart do
   defstruct type: "table", measures: [], dimensions: []
 
   defmodule Helpers do

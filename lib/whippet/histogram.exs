@@ -1,4 +1,4 @@
-defmodule Chart.Histogram do
+defmodule Whippet.Chart.Histogram do
   use Hound.Helpers
   import Beagle.Helpers
 
