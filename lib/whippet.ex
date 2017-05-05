@@ -13,6 +13,8 @@ defmodule Whippet do
       import Whippet.Chart.Row
       import Whippet.Chart.Table
       import Whippet.Legend
+      alias Whippet.Legend, as: Legend
+      alias Whippet.Chart, as: Chart
       import unquote(__MODULE__)
     end
   end
