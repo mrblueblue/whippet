@@ -1,4 +1,4 @@
-%{"beagle": {:git, "https://github.com/mrblueblue/beagle.git", "5db688c9affe023f668e6b961441ffe4d38bbacc", []},
+%{"beagle": {:git, "https://github.com/mrblueblue/beagle.git", "6caf762032b004eb49ca5803cf3ef444f488db5f", []},
   "certifi": {:hex, :certifi, "1.2.1", "c3904f192bd5284e5b13f20db3ceac9626e14eeacfbb492e19583cf0e37b22be", [:rebar3], []},
   "earmark": {:hex, :earmark, "1.2.2", "f718159d6b65068e8daeef709ccddae5f7fdc770707d82e7d126f584cd925b74", [:mix], []},
   "ex_doc": {:hex, :ex_doc, "0.15.1", "d5f9d588fd802152516fccfdb96d6073753f77314fcfee892b15b6724ca0d596", [:mix], [{:earmark, "~> 1.1", [hex: :earmark, optional: false]}]},
