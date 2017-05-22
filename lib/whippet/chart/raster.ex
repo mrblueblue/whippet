@@ -37,7 +37,6 @@ defmodule Whippet.Chart.Raster do
       |> Enum.at(0)
       |> (fn({x, y}) -> move_doubleclick(selector, x, y) end).()
 
-    IO.inspect Application.get_env(:whippet, :animation_timeout)
     :timer.sleep(Application.get_env(:whippet, :animation_timeout) * 2)
   end
 
