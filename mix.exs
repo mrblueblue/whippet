@@ -22,7 +22,7 @@ defmodule Whippet.Mixfile do
 
   defp deps do
     [
-      {:hound, "~> 1.0"},
+      {:hound, github: "mrblueblue/hound"},
       {:beagle, github: "mrblueblue/beagle"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
